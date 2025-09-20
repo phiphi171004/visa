@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Trial Helper - Sáng tạo bởi PHI PHI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-sparkles"></i>
+                    </div>
+                    <div>
+                        <h1 class="logo-text">Cursor Trial Helper</h1>
+                        <p class="logo-subtitle">Sáng tạo bởi <span class="brand">PHI PHI</span></p>
+                    </div>
+                </div>
+                <div class="header-love">
+                    <i class="fas fa-heart heart-icon"></i>
+                    <span>Made with love</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="main-card">
+                <!-- Tab Navigation -->
+                <div class="tabs-container">
+                    <button class="tab-button active" data-tab="cards">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Thẻ Ảo Có Sẵn</span>
+                    </button>
+                    <button class="tab-button" data-tab="timo">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Tạo Thẻ Ảo Timo</span>
+                    </button>
+                    <button class="tab-button" data-tab="reset">
+                        <i class="fas fa-bolt"></i>
+                        <span>Reset Trial Cursor</span>
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="content">
+                    <!-- Cards Tab -->
+                    <div id="cards" class="tab-content active">
+                        <div class="text-center mb-8">
+                            <h2 class="section-title">Thẻ Ảo Có Sẵn Để Đăng Ký Cursor</h2>
+                            <p class="section-description">
+                                Dưới đây là danh sách các thẻ ảo có sẵn để bạn sử dụng đăng ký Cursor Free Trial. 
+                                Nhấn vào nút sao chép để copy thông tin thẻ.
+                            </p>
+                        </div>
+
+                        <div class="info-box info">
+                            <i class="fas fa-info-circle info-box-icon"></i>
+                            <div class="info-box-content">
+                                <h4>Hướng dẫn sử dụng:</h4>
+                                <ol>
+                                    <li>Nhấn nút sao chép bên cạnh thông tin thẻ</li>
+                                    <li>Truy cập <a href="https://cursor.com" target="_blank">https://cursor.com</a></li>
+                                    <li>Khi được yêu cầu thông tin thẻ, nhập thông tin đã sao chép theo định dạng: Số thẻ | Tháng hết hạn | Năm hết hạn | CVV</li>
+                                    <li>Hoàn tất đăng ký và sử dụng Cursor</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="info-box warning">
+                            <i class="fas fa-exclamation-triangle info-box-icon"></i>
+                            <div class="info-box-content">
+                                <h4>Lưu ý quan trọng:</h4>
+                                <p>
+                                    Nếu thẻ ảo có sẵn không hoạt động, bạn có thể 
+                                    <button class="btn-link" onclick="switchTab('timo')">tạo thẻ ảo Timo</button>
+                                    của riêng mình.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="text-center mb-8">
+                            <button id="generateBtn" class="btn btn-primary">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Tạo thẻ mới</span>
+                            </button>
+                        </div>
+
+                        <div id="cardsGrid" class="cards-grid">
+                            <!-- Cards will be generated here -->
+                        </div>
+
+                        <div class="step-guide">
+                            <h3>Đăng ký Cursor Free Trial</h3>
+                            <div class="steps-list">
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Truy cập trang đăng ký Cursor</h4>
+                                        <p>Vào website Cursor để bắt đầu quá trình đăng ký.</p>
+                                        <a href="https://cursor.com" target="_blank">
+                                            https://cursor.com
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Nhập thông tin thẻ ảo</h4>
+                                        <p>Khi được yêu cầu thông tin thanh toán, nhập thông tin thẻ ảo đã sao chép theo định dạng: Số thẻ | Tháng hết hạn | Năm hết hạn | CVV</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Hoàn tất đăng ký</h4>
+                                        <p>Xác nhận đăng ký và bắt đầu sử dụng Cursor với gói dùng thử miễn phí.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timo Tab -->
+                    <div id="timo" class="tab-content">
+                        <div class="text-center mb-8">
+                            <h2 class="section-title">Tạo Thẻ Ảo Timo</h2>
+                            <p class="section-description">
+                                Hướng dẫn chi tiết cách tạo thẻ ảo Timo để đăng ký Cursor Free Trial một cách an toàn.
+                            </p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3>Tại sao cần thẻ ảo?</h3>
+                            <p class="mb-4">
+                                Cursor yêu cầu thông tin thẻ tín dụng khi đăng ký dùng thử miễn phí. Sử dụng thẻ ảo giúp bạn:
+                            </p>
+                            <ul class="list-disc pl-6 space-y-2">
+                                <li>Bảo vệ thông tin tài chính cá nhân</li>
+                                <li>Tránh bị trừ tiền tự động khi hết hạn dùng thử</li>
+                                <li>Dễ dàng hủy đăng ký khi không muốn tiếp tục sử dụng</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box warning">
+                            <i class="fas fa-exclamation-triangle info-box-icon"></i>
+                            <div class="info-box-content">
+                                <h4>Lưu ý quan trọng:</h4>
+                                <p>Thẻ ảo Timo chỉ nên dùng để đăng ký, KHÔNG nạp tiền vào thẻ này để tránh bị trừ tiền khi hết hạn dùng thử.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-guide">
+                            <h3>Cách tạo thẻ ảo Timo</h3>
+                            <div class="steps-list">
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Đăng ký tài khoản Timo</h4>
+                                        <p>Tải ứng dụng Timo từ App Store hoặc Google Play và đăng ký tài khoản mới.</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Xác thực tài khoản</h4>
+                                        <p>Hoàn thành quy trình xác thực danh tính theo hướng dẫn của Timo.</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Tạo thẻ ảo</h4>
+                                        <p>Trong ứng dụng Timo, chọn mục "Thẻ" → "Tạo thẻ ảo" và làm theo hướng dẫn.</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h4>Sử dụng thông tin thẻ</h4>
+                                        <p>Sau khi tạo thẻ, bạn sẽ nhận được thông tin thẻ bao gồm số thẻ, ngày hết hạn và mã CVV để sử dụng khi đăng ký Cursor.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reset Tab -->
+                    <div id="reset" class="tab-content">
+                        <div class="text-center mb-8">
+                            <h2 class="section-title">Reset Trial Cursor</h2>
+                            <p class="section-description">
+                                Khi bạn đã sử dụng hết thời gian dùng thử của Cursor, có hai cách để tiếp tục sử dụng.
+                            </p>
+                        </div>
+
+                        <div class="info-box info">
+                            <i class="fas fa-info-circle info-box-icon"></i>
+                            <div class="info-box-content">
+                                <h4>Cách 1: Đăng xuất và đăng nhập với tài khoản khác</h4>
+                                <p>Nếu gặp lỗi thông thường, bạn chỉ cần đăng xuất tài khoản hiện tại và đăng nhập bằng một tài khoản khác là có thể sử dụng được Cursor.</p>
+                            </div>
+                        </div>
+
+                        <div class="info-box error">
+                            <i class="fas fa-exclamation-triangle info-box-icon"></i>
+                            <div class="info-box-content">
+                                <h4>Cách 2: Reset Machine ID khi gặp lỗi giới hạn dùng thử</h4>
+                                <p class="mb-3">Nếu bạn gặp lỗi sau:</p>
+                                <div class="error-code">
+                                    "Too many free trial accounts used on this machine. Please upgrade to pro. We have this limit in place to prevent abuse. Please let us know if you believe this is a mistake."
+                                </div>
+                                <p>Bạn cần thực hiện reset Machine ID bằng cách:</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 mb-6">
+                            <h3>Hướng dẫn Reset Machine ID</h3>
+                            <div class="steps-list">
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Truy cập công cụ Reset</h4>
+                                        <p>Vào website công cụ reset để thực hiện reset Machine ID.</p>
+                                        <a href="https://cusor-gen.pages.dev/" target="_blank">
+                                            https://cusor-gen.pages.dev/
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Đóng ứng dụng Cursor</h4>
+                                        <p class="text-red-600 font-medium">QUAN TRỌNG: Bạn phải đóng hoàn toàn ứng dụng Cursor trước khi chạy công cụ Reset để tránh lỗi!</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Chạy công cụ</h4>
+                                        <p>Chọn tùy chọn số 1 để "Reset Machine ID"</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h4>Khởi động lại Cursor</h4>
+                                        <p>Sau khi reset thành công, khởi động lại ứng dụng Cursor</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">5</div>
+                                    <div class="step-content">
+                                        <h4>Đăng nhập lại</h4>
+                                        <p>Đăng nhập với tài khoản của bạn hoặc tạo tài khoản mới</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-box warning">
+                            <i class="fas fa-exclamation-triangle info-box-icon"></i>
+                            <div class="info-box-content">
+                                <h4>Lưu ý quan trọng:</h4>
+                                <p class="mb-2">
+                                    Việc reset Machine ID chỉ nên thực hiện khi thực sự cần thiết và bạn không thể sử dụng Cursor bằng cách thông thường.
+                                </p>
+                                <p class="text-red-600 font-medium">
+                                    ⚠️ Đảm bảo đã thoát hoàn toàn ứng dụng Cursor trước khi chạy công cụ Reset, nếu không có thể gây ra lỗi không mong muốn.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <div class="info-box info">
+                        <i class="fas fa-info-circle info-box-icon"></i>
+                        <div class="info-box-content">
+                            <h4>Hỗ trợ kỹ thuật:</h4>
+                            <p>
+                                Nếu gặp khó khăn trong quá trình đăng ký hoặc sử dụng, vui lòng liên hệ với chúng tôi qua
+                                <a href="https://t.me/saitama_b" target="_blank">
+                                    Telegram
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                để được hỗ trợ.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="footer-brand">
+                        <i class="fas fa-comment"></i>
+                        <span>
+                            Sáng tạo bởi <span class="brand">PHI PHI</span> với ❤️
+                        </span>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
