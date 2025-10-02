@@ -202,6 +202,8 @@ class CardGenerator {
 let cardGenerator = new CardGenerator();
 let cards = [];
 let copiedIndex = null;
+let canvaCards = [];
+let copiedCanvaIndex = null;
 
 // Tab functionality
 function switchTab(tabName) {
@@ -322,6 +324,127 @@ function copyCard(index) {
     });
 }
 
+// Generate Canva cards function
+function generateCanvaCards() {
+    const generateBtn = document.getElementById('generateCanvaBtn');
+    const cardsGrid = document.getElementById('canvaCardsGrid');
+    
+    // Show loading state
+    generateBtn.innerHTML = '<i class="fas fa-sync-alt loading-spinner"></i><span>Đang tạo thẻ...</span>';
+    generateBtn.disabled = true;
+    
+    // Canva BIN patterns
+    const canvaBins = [
+        '434769206269xxxx',  // 12 digits + 4 random
+        '434769206262xxxx',  // 12 digits + 4 random
+        '434769206266xxxx',  // 12 digits + 4 random
+        '43476920626xxxxx'   // 11 digits + 5 random
+    ];
+    
+    // Generate cards after delay
+    setTimeout(() => {
+        canvaCards = [];
+        
+        canvaBins.forEach(bin => {
+            cardGenerator.form.quantity = 1;
+            cardGenerator.form.currency = "USD";
+            cardGenerator.form.balance = "500-1000";
+            
+            const generatedCard = cardGenerator.generate(bin)[0];
+            canvaCards.push({
+                number: generatedCard.card_number,
+                expMonth: generatedCard.expiration_month,
+                expYear: generatedCard.expiration_year,
+                cvv: generatedCard.cvv,
+                binType: bin.substring(0, 12) // Store BIN type for display
+            });
+        });
+        
+        renderCanvaCards();
+        
+        // Reset button
+        generateBtn.innerHTML = '<i class="fas fa-paint-brush"></i><span>Tạo thẻ Canva</span>';
+        generateBtn.disabled = false;
+    }, 1000);
+}
+
+// Render Canva cards function
+function renderCanvaCards() {
+    const cardsGrid = document.getElementById('canvaCardsGrid');
+    cardsGrid.innerHTML = '';
+    
+    canvaCards.forEach((card, index) => {
+        const cardElement = document.createElement('div');
+        cardElement.className = 'virtual-card';
+        cardElement.innerHTML = `
+            <div class="card-header">
+                <div class="card-info">
+                    <div class="card-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div>
+                        <div class="card-title">Canva Card #${index + 1}</div>
+                        <div class="card-subtitle">BIN: ${card.binType}</div>
+                    </div>
+                </div>
+                
+                <button class="copy-btn" onclick="copyCanvaCard(${index})" title="Sao chép thông tin thẻ">
+                    <i class="fas ${copiedCanvaIndex === index ? 'fa-check' : 'fa-copy'}"></i>
+                </button>
+            </div>
+
+            <div class="card-details">
+                <div class="card-detail">
+                    <i class="fas fa-credit-card card-detail-icon"></i>
+                    <span class="card-detail-label">Số thẻ:</span>
+                    <span class="card-detail-value">****${card.number.slice(-4)}</span>
+                </div>
+                
+                <div class="card-detail">
+                    <i class="fas fa-calendar card-detail-icon"></i>
+                    <span class="card-detail-label">Hết hạn:</span>
+                    <span class="card-detail-value">${card.expMonth}/${card.expYear}</span>
+                </div>
+                
+                <div class="card-detail">
+                    <i class="fas fa-shield-alt card-detail-icon"></i>
+                    <span class="card-detail-label">CVV:</span>
+                    <span class="card-detail-value">***</span>
+                </div>
+            </div>
+
+            ${copiedCanvaIndex === index ? `
+                <div class="copy-success">
+                    <i class="fas fa-check"></i>
+                    <span>Đã sao chép thông tin thẻ!</span>
+                </div>
+            ` : ''}
+        `;
+        
+        cardsGrid.appendChild(cardElement);
+    });
+}
+
+// Copy Canva card function
+function copyCanvaCard(index) {
+    const card = canvaCards[index];
+    const cardInfo = `${card.number}|${card.expMonth}|${card.expYear}|${card.cvv}`;
+    
+    navigator.clipboard.writeText(cardInfo).then(() => {
+        copiedCanvaIndex = index;
+        renderCanvaCards();
+        
+        // Reset copied state after 2 seconds
+        setTimeout(() => {
+            copiedCanvaIndex = null;
+            renderCanvaCards();
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+        alert('Không thể sao chép. Vui lòng thử lại.');
+    });
+}
+
 // Initialize app
 document.addEventListener('DOMContentLoaded', function() {
     // Add click event listeners to tab buttons
@@ -334,6 +457,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add click event listener to generate button
     document.getElementById('generateBtn').addEventListener('click', generateCards);
+    
+    // Add click event listener to Canva generate button
+    const canvaBtn = document.getElementById('generateCanvaBtn');
+    if (canvaBtn) {
+        canvaBtn.addEventListener('click', generateCanvaCards);
+    }
     
     // Generate initial cards
     generateCards();
