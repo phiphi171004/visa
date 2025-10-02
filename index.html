@@ -40,6 +40,10 @@
                         <i class="fas fa-credit-card"></i>
                         <span>Thẻ Ảo Có Sẵn</span>
                     </button>
+                    <button class="tab-button" data-tab="canva">
+                        <i class="fas fa-paint-brush"></i>
+                        <span>BIN Canva</span>
+                    </button>
                     <button class="tab-button" data-tab="timo">
                         <i class="fas fa-sync-alt"></i>
                         <span>Tạo Thẻ Ảo Timo</span>
@@ -124,6 +128,77 @@
                                     <div class="step-content">
                                         <h4>Hoàn tất đăng ký</h4>
                                         <p>Xác nhận đăng ký và bắt đầu sử dụng Cursor với gói dùng thử miễn phí.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Canva Tab -->
+                    <div id="canva" class="tab-content">
+                        <div class="text-center mb-8">
+                            <h2 class="section-title">BIN Canva - Thẻ Ảo Đặc Biệt</h2>
+                            <p class="section-description">
+                                Các thẻ ảo với BIN đặc biệt dành cho Canva. Click nút tạo thẻ để sinh thẻ mới.
+                            </p>
+                        </div>
+
+                        <div class="info-box info">
+                            <i class="fas fa-info-circle info-box-icon"></i>
+                            <div class="info-box-content">
+                                <h4>Hướng dẫn sử dụng:</h4>
+                                <ol>
+                                    <li>Nhấn nút "Tạo thẻ Canva" để tạo thẻ với BIN đặc biệt</li>
+                                    <li>Nhấn nút sao chép bên cạnh thông tin thẻ</li>
+                                    <li>Truy cập <a href="https://canva.com" target="_blank">https://canva.com</a> hoặc <a href="https://cursor.com" target="_blank">https://cursor.com</a></li>
+                                    <li>Nhập thông tin thẻ đã sao chép theo định dạng: Số thẻ | Tháng hết hạn | Năm hết hạn | CVV</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="info-box warning">
+                            <i class="fas fa-exclamation-triangle info-box-icon"></i>
+                            <div class="info-box-content">
+                                <h4>Lưu ý:</h4>
+                                <p>
+                                    Đây là thẻ ảo với BIN đặc biệt. Mỗi lần tạo sẽ có 4 thẻ từ 4 BIN khác nhau.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="text-center mb-8">
+                            <button id="generateCanvaBtn" class="btn btn-primary">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>Tạo thẻ Canva</span>
+                            </button>
+                        </div>
+
+                        <div id="canvaCardsGrid" class="cards-grid">
+                            <!-- Canva cards will be generated here -->
+                        </div>
+
+                        <div class="step-guide">
+                            <h3>BIN Canva Đặc Biệt</h3>
+                            <div class="steps-list">
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>4 loại BIN khác nhau</h4>
+                                        <p>Mỗi lần tạo thẻ sẽ sinh ra 4 thẻ từ 4 BIN prefix khác nhau, phù hợp cho nhiều mục đích sử dụng.</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Random hoàn toàn</h4>
+                                        <p>Số thẻ, ngày hết hạn và CVV đều được tạo ngẫu nhiên, đảm bảo tính bảo mật.</p>
+                                    </div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Sử dụng linh hoạt</h4>
+                                        <p>Có thể sử dụng cho Canva Pro Trial hoặc các dịch vụ khác yêu cầu thẻ tín dụng.</p>
                                     </div>
                                 </div>
                             </div>
